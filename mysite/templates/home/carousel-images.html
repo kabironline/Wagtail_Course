@@ -1,0 +1,22 @@
+{% load wagtailcore_tags wagtailimages_tags%}
+<hr>
+<div id="carouselExampleControls" class="carousel slide container" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for cycles in self.Image_Carousel.all %}
+                {% image cycles.carosuel_images  fill-1920x1080 as img %}
+                <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+                    <img src="{{img.url}}" class="d-block w-100" alt="{{img.alt}}">
+                </div>
+            {% endfor %}
+
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+</div>
+<hr>

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load wagtailimages_tags %}
+{% block content %}
+    <div class="container">
+        <h1 class="text-center">| Latest Post |</h1>
+        <br>
+        {% for post in latest_post %}
+        {%image post.blog_image fill-128x128 as img%}
+        <div class="row">
+                <div class="col-sm-2">
+                    <a href="{{post.url}}">
+                        <img src="{{img.url}}" alt="{{img.alt}}">
+                    </a>
+                </div>
+                <div class="col-sm-10">
+                    <a href="{{ post.url }}">
+                        {{post.custom_title}}
+                    </a>
+                </div>
+            </div>
+            <div class="mb-5"></div>
+        {% endfor %}
+    </div>
+{% endblock content %}

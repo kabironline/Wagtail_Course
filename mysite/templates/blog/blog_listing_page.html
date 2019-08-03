@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load wagtailimages_tags wagtailroutablepage_tags %}
+{% block content %}
+
+    <a href="{% routablepageurl page 'latest_blog_posts' %}"> View Latest Posts</a>
+
+    <div class="container">
+        {% for post in posts %}
+        {%image post.blog_image fill-128x128 as img%}
+        <div class="row">
+                <div class="col-sm-2">
+                    <a href="{{post.url}}">
+                        <img src="{{img.url}}" alt="{{img.alt}}">
+                    </a>
+                </div>
+                <div class="col-sm-10">
+                    <a href="{{ post.url }}">
+                        {{post.custom_title}}
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
